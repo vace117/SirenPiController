@@ -16,8 +16,8 @@ logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s] %(name)s: %(messa
 logger = logging.getLogger("SirenServer")
 
 PORT = 8080
-IF = 'eth0'
-
+IFACE_NAME = 'eth0'
+GPIO_PIN = 17
 
 class SirenMessageHandler(socketserver.StreamRequestHandler):
     """
@@ -55,11 +55,11 @@ class SirenMessageHandler(socketserver.StreamRequestHandler):
 def eth0_ip_address():
     """Discovers the IP address on 'eth0'"""
     
-    if ( IF not in netifaces.interfaces() ):
-        logger.error(IF, "is not up!")
-        raise Exception("Could not find", IF)
+    if ( IFACE_NAME not in netifaces.interfaces() ):
+        logger.error(IFACE_NAME, "is not up!")
+        raise Exception("Could not find", IFACE_NAME)
     
-    eth0_ip = netifaces.ifaddresses(IF)[netifaces.AF_INET][0]['addr']
+    eth0_ip = netifaces.ifaddresses(IFACE_NAME)[netifaces.AF_INET][0]['addr']
     
     return eth0_ip
     
@@ -67,7 +67,7 @@ def eth0_ip_address():
 
 # Configure GPIO controller
 try:
-    sirenController = SirenController(17)
+    sirenController = SirenController(GPIO_PIN)
     sirenController.run_siren_test()
 except Exception as e:
     sirenController.cleanup()
