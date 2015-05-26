@@ -1,4 +1,4 @@
-# SirenPiController
+# Raspberry Pi Siren Controller
 This is a Raspberry Pi script for controlling an AC powered siren light. The script drives a GPIO pin, which in turn controls the power switching circuitry. 
 
 Users can communicate with this script by sending commands via a TCP/IP socket. The script will listen on port 8080.
