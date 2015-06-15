@@ -35,12 +35,12 @@ class SirenMessageHandler(socketserver.StreamRequestHandler):
         try:
             if command == "SIREN_ON":
                 sirenController.siren_on()
-                self.respond("OK")
+                self.respond("OK\n")
             elif command == "SIREN_OFF":
                 sirenController.siren_off()
-                self.respond("OK")
+                self.respond("OK\n")
             else:
-                self.respond("FAIL")
+                self.respond("FAIL\n")
             
         except Exception as e:
             print(e)
