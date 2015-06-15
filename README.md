@@ -10,7 +10,7 @@ There are only 2 commands:
 If the command is executed successfully, the script will respond to the caller with an `OK` message. Otherwise `FAIL` is sent.
 
 ## Installation Prerequesites
-In order to run this Pythin script, you'll need to do the following:
+In order to run this Pythin script, you'll need to do the following on your Raspberry Pi:
 * `apt-get install python3-flufl.enum`
 * `apt-get install python3-setuptools`
 * `apt-get install python3-dev`
